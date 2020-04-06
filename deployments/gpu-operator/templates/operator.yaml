@@ -13,7 +13,9 @@ spec:
       labels:
         name: special-resource-operator
       annotations:
-        openshift.io/scc: restricted-readonly
+      {{- if .Values.operator.podAnnotations }}
+        {{ toYaml .Values.operator.podAnnotations | nindent 8 }}
+      {{- end }}
     spec:
       serviceAccount: special-resource-operator
       serviceAccountName: special-resource-operator

@@ -31,8 +31,8 @@ platform:
 operator:
   repository: nvidia
   image: gpu-operator
-# If not set, the tag defaults to Chart.AppVersion
-# tag: "foo"
+  # If not set, the tag defaults to Chart.AppVersion
+  # tag: "foo"
 
   defaultRuntime: docker
   clusterversion: 0.0
@@ -44,6 +44,9 @@ operator:
     operator: "Equal"
     value: ""
     effect: "NoSchedule"
+
+  podAnnotations:
+    openshift.io/scc: restricted-readonly
 
   affinity:
     nodeAffinity:
